@@ -1,0 +1,21 @@
+{% load dict_filter %}
+
+{% if student.id in purchases_by_student %}
+<ul class="collection purchase-table">
+    
+    {% for purchase in purchases_by_student|dict_filter:student.id %}
+        <li class="collection-item purchase-item">
+            {{ purchase }}
+
+            <form method="POST" action="{% url 'base:spent_lessons_increment' purchase.id%}">
+                {% csrf_token %}
+                <input type="hidden" name="increment" value=1>
+                <button class="badge bg-primary rounded-pill" type="submit" value="+">Spent lesson {{ purchase.get_remaining_lessons }}</button>
+            </form>
+        </li>
+    {% endfor %}
+</ul>
+
+{% else %}
+    <div>No purchases</div>
+{% endif %}

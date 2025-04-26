@@ -1,0 +1,21 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+
+<h1>{{ student.name }}</h1>
+<div>
+    <form action="{% url 'base:edit_student' student.id %}">
+        <input type="submit" value="Edit" />
+    </form>
+    <form action="{% url 'base:delete_student' student.id %}">
+        <input type="submit" value="Delete" />
+    </form>
+    
+</div>
+<div>{{ student.description }}</div>
+<hr>
+<h4>Purchase list</h4>
+{% include 'base/purchases_component.html' %}
+
+{% endblock %}

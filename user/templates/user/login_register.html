@@ -1,0 +1,33 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+
+<div class="form-error">{{ form.non_field_errors }}</div>
+
+
+<form method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{{ next }}" />
+    
+    {% for f in form %}
+    <p><label class="form-label" for="{{ f.id_for_label }}">{{ f.label }}</label>{{ f }}</p>
+    <div class="form-error">{{ f.errors }}</div>
+    {% endfor %}
+    
+    <p><button type="submit">{{ page|capfirst }}</button></p>
+</form>
+
+<div>
+{% if page == "login" %}
+
+    <p>No account yet?</p>
+    <a href="{% url 'user:register' %}">Sign up</a>
+
+{% else %}
+    <p>Already has an account?</p>
+    <a href="{% url 'user:login' %}">Login</a>
+{% endif %}
+</div>
+
+{% endblock %}

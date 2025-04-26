@@ -1,0 +1,47 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+
+
+
+<p> </p>
+
+    {% if students %}
+
+    
+    <div class="container student-rows-container">
+        <div class="row student-rows-header"> 
+            <h2>Students list</h2>
+        </div>      
+
+        {% for student in students %}
+
+        <div class="row student-row">
+            <div class="col-sm-2 student-row-name">
+                <h3><a href="{% url 'base:student_page' student.id %}">{{ student.name }}</a></h3>
+                <p>{{ student.description }}</p>
+            </div>
+            <div class="col-sm-9 student-row-purchases">{% include 'base/purchases_component.html' %}</div>
+            <div class="col-sm-1 student-row-btns btn-group-vertical">
+                <a type="button" href="{% url 'base:edit_student' student.id %}" class="btn">Edit</a>
+                <a type="button" href="{% url 'base:delete_student' student.id %}" class="btn"/>Delete</a>
+                
+                
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+
+
+
+
+    {% else %}
+        <div>No students</div>
+    {% endif %}
+
+
+
+
+{% endblock %}

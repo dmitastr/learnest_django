@@ -1,0 +1,31 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+
+<h1>My packages</h1>
+<hr>
+<p> </p>
+<div>
+    {% if packages %}
+
+        {% for package in packages %}
+            <h3>{{ package.name }}</h3>
+            <small>{{ package.description }}</small>
+            <form action="{% url 'base:package_edit' package.id %}">
+                <input type="submit" value="Edit" />
+            </form>
+            <form action="{% url 'base:package_delete' package.id %}">
+                <input type="submit" value="Delete" />
+            </form>            
+            <hr>            
+        {% endfor %}
+
+    {% else %}
+        <div>No active packages</div>
+    {% endif %}
+</div>
+
+
+
+{% endblock %}
