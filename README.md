@@ -17,9 +17,9 @@
 
 ## About The Project
 
-Users can add students, packages of lessons 
-and then them to their students. 
-Also you can keep track of how many lessons from each package student has spent.
+Users can add students and packages of lessons, 
+and then assign these packages to their students. 
+They can also keep track of how many lessons from each package a student has used.
 
 
 ## Built With
@@ -39,7 +39,7 @@ Also you can keep track of how many lessons from each package student has spent.
 
 ### Fork and clone the repository
 
-First fork the project using GitHub, than clone it locally:
+First, fork the project on GitHub, then clone it locally:
 
 ```console
 git clone https://github.com/<username>/learnest_django.git
@@ -49,10 +49,10 @@ cd learnest_django
 
 ### Create virtual environment and install dependencies
 
-Using venv create virtual environment in the `.env` folder
-and activate it
+Using `venv` create virtual environment 
+in the `.env` folder and activate it.
 
-Example for windows
+Example for Windows:
 
 ```console
 py -m venv .env
